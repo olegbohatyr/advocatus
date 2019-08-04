@@ -1,9 +1,19 @@
-window.onload = function(){
-	var ask = document.querySelectorAll('.faq-ask');
+$(function(){
+	$('.faq-ask').on('click', function(){
+		/*$('.faq-ask').removeClass('faq-ask--active');
+		$('.faq-answer').slideUp();
+	*/
+		$(this).toggleClass('faq-ask--active');
+		$(this).next().slideToggle();
+	});
 
-	for(var i = 0; i < ask.length; i++){
-		ask[i].onclick = function(){
-			this.classList.toggle('faq-ask--active');
-		}
-	}
-}
+	$('.nav-button').on('click', function(){
+		$(this).toggleClass('nav-button--active');
+		$('.menu-list').slideToggle(300, function(){
+			if($(this).css('display') === 'none'){
+				$(this).removeAttr('style');
+			}
+		});
+
+	});
+});
